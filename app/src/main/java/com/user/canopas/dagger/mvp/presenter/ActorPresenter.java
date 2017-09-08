@@ -13,39 +13,39 @@ import javax.inject.Inject;
 import rx.Observable;
 import rx.Observer;
 
-public class ActorPresenter extends BasePresenter implements Observer<ActorRespone> {
+public class ActorPresenter extends BasePresenter<ActorView> implements Observer<ActorRespone> {
 
     @Inject
     ApiService mApiService;
 
-    public ActorView mActorview;
 
     public void getActor() {
         Observable<ActorRespone> observable = mApiService.getActors();
         subscribe(observable, this);
     }
 
-
     @Inject
-    public ActorPresenter(ActorView view) {
-        this.mActorview = view;
+    public ActorPresenter() {
     }
+
+
+
 
     @Override
     public void onCompleted() {
-        mActorview.compelet();
+        getView().compelet();
     }
 
     @Override
     public void onError(Throwable e) {
 
         Log.e("error", e.getMessage());
-        mActorview.Error(e.getMessage());
+        getView().Error(e.getMessage());
     }
 
     @Override
     public void onNext(ActorRespone actorRespone) {
-        mActorview.GetActorResponse(actorRespone);
+        getView().GetActorResponse(actorRespone);
     }
 
 }

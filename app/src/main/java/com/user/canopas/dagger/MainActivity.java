@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import com.user.canopas.dagger.Api.ApiService;
+import com.user.canopas.dagger.di.Module.ApiModule;
+import com.user.canopas.dagger.di.component.DaggerApiComponent;
 import com.user.canopas.dagger.mvp.view.ActorView;
 import com.user.canopas.dagger.Application.ActorApp;
 
@@ -23,7 +25,7 @@ import javax.inject.Inject;
 import rx.Observable;
 
 public class MainActivity extends AppCompatActivity implements ActorView {
-@Inject
+    @Inject
     ActorPresenter mActorPresenter;
     ArrayList<Actors> arrayList;
     Cust_Adptr adptr;
@@ -35,17 +37,19 @@ public class MainActivity extends AppCompatActivity implements ActorView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ((ActorApp) getApplication()).getApiComponent().inject(this);
+        //  ((ActorApp) getApplication()).getApiComponent().inject(this);
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         arrayList = new ArrayList<>();
-
+        resolveDaggerDependency();
         LoadData();
 
     }
 
-
+    private void resolveDaggerDependency() {
+        DaggerApiComponent.builder().networkComponent(((ActorApp) getApplication()).getneworkComponent()).apiModule(new ApiModule(this)).build().inject(this);
+    }
 
     private void LoadData() {
         mActorPresenter.getActor();
@@ -76,8 +80,6 @@ public class MainActivity extends AppCompatActivity implements ActorView {
         adptr = new Cust_Adptr(this, arrayList);
         recyclerView.setAdapter(adptr);
     }
-
-
 
 
 }

@@ -25,10 +25,10 @@ public class ActorApp extends Application {
 
     private void resolveDependency() {
         networkComponent = DaggerNetworkComponent.builder().networkModule(new NetworkModule(Base_URL)).build();
-        apiComponent = DaggerApiComponent.builder().networkComponent(networkComponent).apiModule(new ApiModule()).build();
+       // apiComponent = DaggerApiComponent.builder().networkComponent(networkComponent).apiModule(new ApiModule()).build();
     }
 
-    public ApiComponent getApiComponent() {
-        return apiComponent;
+    public NetworkComponent getneworkComponent() {
+        return networkComponent;
     }
 }
