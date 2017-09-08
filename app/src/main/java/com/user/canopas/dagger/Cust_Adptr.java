@@ -68,7 +68,12 @@ class Cust_Adptr extends RecyclerView.Adapter<Cust_Adptr.ViewHolder> {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    showDialog(actors, c);
+                  //  showDialog(actors, c);
+                   FragmentManager fm =((Activity)c).getFragmentManager();
+                    CustomDialog dialog=new CustomDialog();
+                    dialog.addList(actors);
+                    dialog.show(fm,"dialog");
+
                 }
             });
         }
