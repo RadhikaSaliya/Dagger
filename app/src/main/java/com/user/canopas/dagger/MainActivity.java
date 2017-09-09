@@ -1,5 +1,6 @@
 package com.user.canopas.dagger;
 
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -22,6 +23,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import dmax.dialog.SpotsDialog;
 import rx.Observable;
 
 public class MainActivity extends AppCompatActivity implements ActorView {
@@ -30,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements ActorView {
     ArrayList<Actors> arrayList;
     Cust_Adptr adptr;
     RecyclerView recyclerView;
-
+    SpotsDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,18 +54,24 @@ public class MainActivity extends AppCompatActivity implements ActorView {
     }
 
     private void LoadData() {
+        dialog = new SpotsDialog(MainActivity.this);
+        dialog.show();
+
         mActorPresenter.getActor();
     }
 
 
     @Override
     public void compelet() {
+
+        dialog.dismiss();
         Log.e("onComplate", "task Complete");
 
     }
 
     @Override
     public void Error(String message) {
+        dialog.dismiss();
         Log.e("onError", message);
     }
 
