@@ -1,10 +1,10 @@
 package com.user.canopas.dagger;
 
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 
 import com.user.canopas.dagger.Api.ApiService;
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements ActorView {
         //  ((ActorApp) getApplication()).getApiComponent().inject(this);
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
         arrayList = new ArrayList<>();
         resolveDaggerDependency();
         LoadData();
