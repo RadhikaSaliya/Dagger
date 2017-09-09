@@ -44,15 +44,17 @@ public class CustomDialog extends DialogFragment {
 
         Glide.with(getActivity()).load(img).into(photo);
         name_txt.setText(name);
-        country_txt.setText(country);
-        child_txt.setText(child);
-        dob_txt.setText(dob);
+        country_txt.setText("Country: "+country);
+        child_txt.setText("Children: "+child);
+        dob_txt.setText("Dob: "+dob);
 
         description_txt.setText(desc);
-        spouse_txt.setText(spouse);
-        height_txt.setText(height);
+        spouse_txt.setText("Spouse: "+spouse);
+        height_txt.setText("Height: "+height);
         return view;
     }
+
+
 
     public CustomDialog() {
 

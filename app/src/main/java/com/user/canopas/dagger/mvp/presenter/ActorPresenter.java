@@ -39,7 +39,6 @@ public class ActorPresenter extends BasePresenter<ActorView> implements Observer
     @Override
     public void onError(Throwable e) {
 
-        Log.e("error", e.getMessage());
         getView().Error(e.getMessage());
     }
 
