@@ -10,5 +10,5 @@ import rx.Observable;
 public interface ApiService {
 
     @GET("/JSONParsingTutorial/jsonActors")
-     Observable<ActorRespone> getActors();
+    Observable<ActorRespone> getActors();
 }
