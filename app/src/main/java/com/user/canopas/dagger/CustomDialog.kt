@@ -10,11 +10,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import butterknife.Bind
+import butterknife.BindView
+
 import butterknife.ButterKnife
 
 import com.bumptech.glide.Glide
 import com.user.canopas.dagger.mvp.model.Actors
+
 
 import de.hdodenhof.circleimageview.CircleImageView
 
@@ -28,17 +30,17 @@ class CustomDialog : DialogFragment() {
     lateinit var desc: String
     lateinit var country: String
     lateinit var dob: String
-    @Bind(R.id.photo) lateinit var photo: ImageView
-    @Bind(R.id.name_txt) lateinit var name_txt: TextView
-    @Bind(R.id.country_txt) lateinit var country_txt: TextView
-    @Bind(R.id.child_txt) lateinit var child_txt: TextView
-    @Bind(R.id.dob_txt) lateinit var dob_txt: TextView
-    @Bind(R.id.description_txt) lateinit var description_txt: TextView
-    @Bind(R.id.spouse_txt) lateinit var spouse_txt: TextView
-    @Bind(R.id.height_txt) lateinit var height_txt: TextView
+    @BindView(R.id.photo) lateinit var photo: ImageView
+    @BindView(R.id.name_txt) lateinit var name_txt: TextView
+    @BindView(R.id.country_txt) lateinit var country_txt: TextView
+    @BindView(R.id.child_txt) lateinit var child_txt: TextView
+    @BindView(R.id.dob_txt) lateinit var dob_txt: TextView
+    @BindView(R.id.description_txt) lateinit var description_txt: TextView
+    @BindView(R.id.spouse_txt) lateinit var spouse_txt: TextView
+    @BindView(R.id.height_txt) lateinit var height_txt: TextView
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View?{
-        val view = inflater?.inflate(R.layout.actor_details, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?{
+        val view = inflater.inflate(R.layout.actor_details, container, false)
         ButterKnife.bind(this, view)
         Glide.with(activity).load(img).into(photo)
         name_txt.text = name

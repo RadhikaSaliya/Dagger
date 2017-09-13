@@ -16,7 +16,8 @@ import com.user.canopas.dagger.mvp.model.Actors
 
 import java.util.ArrayList
 
-import butterknife.Bind
+
+import butterknife.BindView
 import butterknife.ButterKnife
 import de.hdodenhof.circleimageview.CircleImageView
 
@@ -40,9 +41,9 @@ internal class Cust_Adptr(var c: Context, var arrayList: ArrayList<Actors>?) : R
 
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        @Bind(R.id.actor_img)
+        @BindView(R.id.actor_img)
          @JvmField var img: ImageView? = null
-        @Bind(R.id.actor_name)
+        @BindView(R.id.actor_name)
          @JvmField var name: TextView? = null
 
         init {
